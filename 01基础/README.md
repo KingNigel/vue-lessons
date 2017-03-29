@@ -33,7 +33,7 @@ vue被称为*渐进式框架*，怎么个渐进式如下图
     </script>
 ```
 
-2. mvvm与双向数据绑定
+2. 双向数据绑定
 数据绑定，就是页面dom元素与vue实例中的数据进行绑定，也会称之为*响应式数据*
 下面这个例子，我们通过对app这个实例里面的数据进行修改，进而修改了页面上的dom元素。
 ```html
@@ -58,5 +58,24 @@ vue被称为*渐进式框架*，怎么个渐进式如下图
         //4.输出为xxx，说明vue实例代理data对象里面的数据不是深拷贝ß
         console.log(bar.name);
     </script>
-```    
+```   
 
+双向数据绑定,input输入框里面的值变化了会导致app.foo的值变化，app.foo的值变化了也引起了p标签中文本的变化，这就是一个从页面到数据对象和数据对象到页面的双向的数据绑定。
+
+```html
+<div id="app">
+        <input type="text" v-model="foo">
+        <p>{{foo}}</p>
+    </div>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+               foo:"bar"
+            }
+        })
+    </script>
+```
+
+3. mvvm
+ 
