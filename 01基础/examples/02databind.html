@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>02databind</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+     <div id="app">
+        {{foo.name}}
+    </div>
+    <script>
+        var bar={name:"nigel"}
+        var app=new Vue({
+            el:"#app",
+            data:{
+               foo:bar,
+               baz:"ooo"
+            }
+        })
+        //输出为ooo，vue的实例会代理data对象里面的数据
+        console.log(app.baz);
+         //输出为ooo，通过$data访问data属性
+        console.log(app.$data.baz);
+        app.foo.name="xxx"
+        //输出为xxx，说明vue实例代理data对象里面的数据不是深拷贝ß
+        console.log(bar.name);
+    </script>
+</body>
+</html>
